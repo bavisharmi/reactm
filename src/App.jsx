@@ -1,23 +1,18 @@
- import { useState } from "react";
- import "./App.css";
+ import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Home from "./assets/Home.jsx";
+import Post from "./assets/Post.jsx";
+
 function App() {
-const [color, setColor] = useState("white");
-return (
-<div className="container">
-<h1 className="title">Color Picker</h1>
-<div className="btn-group">
-<button className="btn red" onClick={() => setColor("red")}>
-Red
-</button>
-<button className="btn blue" onClick={() => setColor("blue")}>
-Blue
-</button>
-<button className="btn green" onClick={() => setColor("green")}>
-Green
-</button>
-</div>
-<div className="color-box" style={{ backgroundColor: color }}></div>
-</div>
-);
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/post/:id" element={<Post />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
+
 export default App;
